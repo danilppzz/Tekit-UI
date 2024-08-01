@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "
   let variantClasses;
   switch (variant) {
     case "outline":
-      variantClasses = "bg-transparent border border-white/10 text-white/80";
+      variantClasses = "bg-transparent border border-white/10 text-white/80 hover:bg-[#2E2E33] hover:bg-opacity-60";
       break;
     case "ghost":
       variantClasses = "bg-transparent text-white/80 hover:bg-[#2E2E33]";
@@ -39,3 +39,4 @@ const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "
 };
 
 export default Button;
+
