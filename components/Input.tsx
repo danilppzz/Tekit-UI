@@ -3,10 +3,15 @@ import React from "react";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   variant?: "default" | "search";
-  label?: string;
+  ref?: any;
 }
 
-const Input: React.FC<InputProps> = ({ variant = "default", label = "Upload", className = "", ...rest }) => {
+const Input: React.FC<InputProps> = ({
+  variant = "default",
+  className = "",
+  ref,
+  ...rest
+}) => {
   if (variant === "search") {
     return (
       <div className="relative inline-block">
@@ -27,6 +32,7 @@ const Input: React.FC<InputProps> = ({ variant = "default", label = "Upload", cl
           />
         </svg>
         <input
+          ref={ref}
           {...rest}
           className={`bg-[#121216] h-[36px] pl-10 py-auto rounded-md text-[14px] font-sans font-semibold bg-opacity-75 hover:bg-opacity-100 transition-all duration-300 ease-in-out border border-white/10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ${className}`}
         />
@@ -35,6 +41,7 @@ const Input: React.FC<InputProps> = ({ variant = "default", label = "Upload", cl
   } else {
     return (
       <input
+        ref={ref}
         {...rest}
         className={`bg-[#121216] h-[36px] px-4 rounded-md text-[14px] font-sans font-semibold flex items-center justify-center bg-opacity-75 hover:bg-opacity-100 transition-all duration-300 ease-in-out border border-white/10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ${className}`}
       />
@@ -43,3 +50,4 @@ const Input: React.FC<InputProps> = ({ variant = "default", label = "Upload", cl
 };
 
 export default Input;
+
