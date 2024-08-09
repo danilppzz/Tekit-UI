@@ -3,12 +3,14 @@ import React from "react";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   variant?: "default" | "search";
+  suffix?: React.ReactNode; // Agregado para aceptar un sufijo
   ref?: any;
 }
 
 const Input: React.FC<InputProps> = ({
   variant = "default",
   className = "",
+  suffix,
   ref,
   ...rest
 }) => {
@@ -36,18 +38,23 @@ const Input: React.FC<InputProps> = ({
           {...rest}
           className={`bg-[#121216] h-[36px] pl-10 py-auto rounded-md text-[14px] font-sans font-semibold bg-opacity-75 hover:bg-opacity-100 transition-all duration-300 ease-in-out border border-white/10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ${className}`}
         />
+        {suffix && <div className="absolute bg-[#1E1E1E] rounded-md text-[12px] px-1 right-3 text-white/70 top-1/2 transform -translate-y-1/2 pointer-events-none">{suffix}</div>}
       </div>
     );
   } else {
     return (
-      <input
-        ref={ref}
-        {...rest}
-        className={`bg-[#121216] h-[36px] px-4 rounded-md text-[14px] font-sans font-semibold flex items-center justify-center bg-opacity-75 hover:bg-opacity-100 transition-all duration-300 ease-in-out border border-white/10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ${className}`}
-      />
+      <div className="relative inline-block">
+        <input
+          ref={ref}
+          {...rest}
+          className={`bg-[#121216] h-[36px] px-4 rounded-md text-[14px] font-sans font-semibold flex items-center justify-center bg-opacity-75 hover:bg-opacity-100 transition-all duration-300 ease-in-out border border-white/10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ${className}`}
+        />
+        {suffix && <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">{suffix}</div>}
+      </div>
     );
   }
 };
 
 export default Input;
+
 
