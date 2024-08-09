@@ -1,6 +1,7 @@
 import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: React.ReactNode;
   size?: "default" | "icon";
   variant?: "default" | "outline" | "ghost";
   children: React.ReactNode;
@@ -8,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   suffix?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "default", prefix = null, suffix = null, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "default", prefix = null, suffix = null, className, ...rest }) => {
   const baseClasses = "h-[36px] rounded-md text-[14px] font-sans font-semibold flex items-center transition-all duration-300 ease-in-out active:scale-95";
   const sizeClasses = size === "default" ? "px-4 py-auto" : "w-[36px] justify-center";
   
@@ -29,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "
   return (
     <button
       {...rest}
-      className={`${baseClasses} ${sizeClasses} ${variantClasses}`}
+      className={`${baseClasses} ${sizeClasses} ${variantClasses} ${className}`}
     >
       {prefix && <span className="mr-2">{prefix}</span>}
       {children}
@@ -39,4 +40,3 @@ const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "
 };
 
 export default Button;
-
