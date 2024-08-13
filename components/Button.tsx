@@ -10,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, size = "default", variant = "default", prefix = null, suffix = null, className, ...rest }) => {
-  const baseClasses = "h-[36px] rounded-md text-[14px] font-sans font-semibold flex items-center transition-all duration-300 ease-in-out active:scale-95";
+  const baseClasses = "h-[36px] rounded-md text-[14px] font-sans font-semibold flex items-center justify-center transition-all duration-300 ease-in-out active:scale-95";
   const sizeClasses = size === "default" ? "px-4 py-auto" : "w-[36px] justify-center";
   
   let variantClasses;
